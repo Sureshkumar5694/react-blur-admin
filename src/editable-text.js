@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class EditableText extends React.Component {
 
   static propTypes = {
-    onChange: React.PropTypes.func.isRequired,
-    isOpen: React.PropTypes.bool,
-    onValidate: React.PropTypes.func,
-    value: React.PropTypes.node,
-    hasError: React.PropTypes.bool,
-    errorHelpLabel: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool,
+    onValidate: PropTypes.func,
+    value: PropTypes.node,
+    hasError: PropTypes.bool,
+    errorHelpLabel: PropTypes.string,
+    placeholder: PropTypes.string,
+    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -33,7 +34,7 @@ export class EditableText extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setState({ dirtyValue: nextProps.value, isBeingEdited: nextProps.isOpen });
+      this.setState({dirtyValue: nextProps.value, isBeingEdited: nextProps.isOpen});
     }
   }
 
@@ -77,7 +78,7 @@ export class EditableText extends React.Component {
   }
 
   getValidationResult() {
-    if (! this.props.onValidate) {
+    if (!this.props.onValidate) {
       return '';
     }
 
@@ -98,7 +99,7 @@ export class EditableText extends React.Component {
   }
 
   renderErrorHelpLabel(status) {
-    if (! this.props.errorHelpLabel || status !== 'error') {
+    if (!this.props.errorHelpLabel || status !== 'error') {
       return null;
     }
 
@@ -110,9 +111,10 @@ export class EditableText extends React.Component {
   render() {
     const status = this.getValidationResult(); // '', warning, success, error
 
-    if (! this.state.isBeingEdited) {
+    if (!this.state.isBeingEdited) {
       return (
-        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
+        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`}
+              onClick={e => this.onSetEditing(true)}>
           {this.props.value || this.props.placeholder}
         </span>
       );
@@ -127,7 +129,7 @@ export class EditableText extends React.Component {
             onChange={e => this.onTextChange(e)}
             onKeyDown={e => this.onHandleKeyDown(e)}
             ref='edit-input'
-            className='editable-has-buttons editable-input form-control' />
+            className='editable-has-buttons editable-input form-control'/>
           <span className='editable-buttons button-wrapper'>
             <button type='button' onClick={e => this.onSubmit(status)} className='btn btn-primary btn-with-icon'>
               <i className='fa fa-check'></i>

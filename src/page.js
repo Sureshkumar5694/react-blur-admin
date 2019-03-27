@@ -1,15 +1,16 @@
 import React from 'react';
-import { Row, Col } from 'react-flex-proto';
+import PropTypes from 'prop-types';
+import {Row, Col} from 'react-flex-proto';
 
 export class Page extends React.Component {
 
   static propTypes = {
-    title: React.PropTypes.string,
-    actionBar: React.PropTypes.node,
+    title: PropTypes.string,
+    actionBar: PropTypes.node,
   }
 
   renderTitle() {
-    if (! this.props.title) {
+    if (!this.props.title) {
       return null;
     }
 
@@ -21,7 +22,7 @@ export class Page extends React.Component {
   }
 
   renderActionBar() {
-    if (! this.props.actionBar) {
+    if (!this.props.actionBar) {
       return null;
     }
 

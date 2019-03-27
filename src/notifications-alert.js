@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class NotificationsAlert extends React.Component {
 
   static propTypes = {
-    notificationCount: React.PropTypes.number.isRequired,
-    settingsOnClick: React.PropTypes.func,
-    allNotificationsOnClick: React.PropTypes.func,
-    markAllAsReadOnClick: React.PropTypes.func,
+    notificationCount: PropTypes.number.isRequired,
+    settingsOnClick: PropTypes.func,
+    allNotificationsOnClick: PropTypes.func,
+    markAllAsReadOnClick: PropTypes.func,
   }
 
   constructor(props) {
@@ -37,13 +38,14 @@ export class NotificationsAlert extends React.Component {
             <i className='dropdown-arr'/>
             <div className='header clearfix'>
               <strong className='red-text'>Notifications</strong>
-                {this.props.markAllAsReadOnClick ? <a onClick={this.props.markAllAsReadOnClick}>Mark All as Read</a> : ''}
-                {this.props.settingsOnClick ? <a onClick={this.props.settingsOnClick}>Settings</a> : ''}
+              {this.props.markAllAsReadOnClick ? <a onClick={this.props.markAllAsReadOnClick}>Mark All as Read</a> : ''}
+              {this.props.settingsOnClick ? <a onClick={this.props.settingsOnClick}>Settings</a> : ''}
             </div>
             <div className='msg-list'>
               {this.props.children}
             </div>
-              {this.props.allNotificationsOnClick ? <a onClick={this.props.allNotificationsOnClick}>See all notifications</a> : ''}
+            {this.props.allNotificationsOnClick ?
+              <a onClick={this.props.allNotificationsOnClick}>See all notifications</a> : ''}
           </div>
         </li>
       </ul>

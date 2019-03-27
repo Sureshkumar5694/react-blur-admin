@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import React from 'react';
+import React from 'react'; import PropTypes from 'prop-types';
 import sinon from 'sinon';
 import {noop} from 'lodash';
 import {expect} from 'chai';

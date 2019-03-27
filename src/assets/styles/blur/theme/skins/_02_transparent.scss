@@ -1,7 +1,7 @@
 body.badmin-transparent {
-  &.mobile{
+  &.mobile {
     background: none;
-    .body-bg{
+    .body-bg {
       display: block;
       position: fixed;
       top: 0;
@@ -28,7 +28,7 @@ body.badmin-transparent {
     .panel-heading {
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
-      transform: translate3d(0,0,0);
+      transform: translate3d(0, 0, 0);
     }
     .panel-body {
       /* Commenting out translate3d due to drop downs appearing beneath panels

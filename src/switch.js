@@ -1,16 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Switch extends React.Component {
 
   static propTypes = {
-    isOn: React.PropTypes.bool,
-    onLabel: React.PropTypes.string,
-    offLabel: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    type: React.PropTypes.oneOf(['primary', 'info', 'warning', 'success', 'danger']),
-    className: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
+    isOn: PropTypes.bool,
+    onLabel: PropTypes.string,
+    offLabel: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    type: PropTypes.oneOf(['primary', 'info', 'warning', 'success', 'danger']),
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -51,9 +52,11 @@ export class Switch extends React.Component {
 
   render() {
     return (
-      <div className={`switch-container ${this.props.isOn ? this.props.type : ''} ${this.props.className}`} onClick={e => this.onChange()}>
-        <div className={`bootstrap-switch ${this.props.disabled ? 'bootstrap-switch-disabled' : ''} bootstrap-switch-wrapper bootstrap-switch-small bootstrap-switch-animate bootstrap-switch-on`}>
-         {this.props.isOn ? this.renderOn() : this.renderOff()}
+      <div className={`switch-container ${this.props.isOn ? this.props.type : ''} ${this.props.className}`}
+           onClick={e => this.onChange()}>
+        <div
+          className={`bootstrap-switch ${this.props.disabled ? 'bootstrap-switch-disabled' : ''} bootstrap-switch-wrapper bootstrap-switch-small bootstrap-switch-animate bootstrap-switch-on`}>
+          {this.props.isOn ? this.renderOn() : this.renderOff()}
         </div>
       </div>
     );

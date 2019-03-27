@@ -1,31 +1,32 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Input extends React.Component {
 
   static propTypes = {
-    type: React.PropTypes.string,
-    id: React.PropTypes.string,
-    name: React.PropTypes.string,
-    className: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    helpLabel: React.PropTypes.string,
-    label: React.PropTypes.string,
-    addonLeft: React.PropTypes.node,
-    addonRight: React.PropTypes.node,
-    autoFocus: React.PropTypes.bool,
-    hasFeedbackIcon: React.PropTypes.bool,
-    onValidate: React.PropTypes.func,
-    onKeyDown: React.PropTypes.func,
-    defaultChecked: React.PropTypes.bool,
-    value: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.string,
-      React.PropTypes.bool,
+    type: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    className: PropTypes.string,
+    placeholder: PropTypes.string,
+    helpLabel: PropTypes.string,
+    label: PropTypes.string,
+    addonLeft: PropTypes.node,
+    addonRight: PropTypes.node,
+    autoFocus: PropTypes.bool,
+    hasFeedbackIcon: PropTypes.bool,
+    onValidate: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    defaultChecked: PropTypes.bool,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.bool,
     ]).isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    disabled: React.PropTypes.bool,
-    isRounded: React.PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    isRounded: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -39,7 +40,7 @@ export class Input extends React.Component {
   }
 
   getValidationResult() {
-    if (! this.props.onValidate) {
+    if (!this.props.onValidate) {
       return '';
     }
 
@@ -61,7 +62,7 @@ export class Input extends React.Component {
    * @return {string}
    */
   getFeedback() {
-    if (! this.props.hasFeedbackIcon) {
+    if (!this.props.hasFeedbackIcon) {
       return '';
     }
 
@@ -73,7 +74,7 @@ export class Input extends React.Component {
   }
 
   renderTopLabel() {
-    if (! this.props.label) {
+    if (!this.props.label) {
       return null;
     }
 
@@ -85,7 +86,7 @@ export class Input extends React.Component {
   }
 
   renderAddonLeft() {
-    if (! this.props.addonLeft) {
+    if (!this.props.addonLeft) {
       return null;
     }
 
@@ -107,9 +108,9 @@ export class Input extends React.Component {
               type="checkbox"
               disabled={this.props.disabled}
               checked={this.props.value}
-              onClick={e => this.props.onChange(! this.props.value)}
+              onClick={e => this.props.onChange(!this.props.value)}
               ref='input'
-             />
+            />
             <span>{this.props.label}</span>
           </label>
         </div>
@@ -156,7 +157,7 @@ export class Input extends React.Component {
   }
 
   renderInputNoWrapper() {
-    if (! (this.props.addonLeft || this.props.addonRight)) {
+    if (!(this.props.addonLeft || this.props.addonRight)) {
       return this.renderInput();
     }
 
@@ -164,7 +165,7 @@ export class Input extends React.Component {
   }
 
   renderAddonRight() {
-    if (! this.props.addonRight) {
+    if (!this.props.addonRight) {
       return null;
     }
 
@@ -176,7 +177,7 @@ export class Input extends React.Component {
   }
 
   renderFeedbackIcon(status) {
-    if (! (status && this.props.hasFeedbackIcon) || this.props.addonRight) {
+    if (!(status && this.props.hasFeedbackIcon) || this.props.addonRight) {
       return null;
     }
 
@@ -193,11 +194,11 @@ export class Input extends React.Component {
       icon = 'fa-exclamation-triangle';
     }
 
-    return <i className={`fa ${icon} form-control-feedback`} />;
+    return <i className={`fa ${icon} form-control-feedback`}/>;
   }
 
   renderHelpBlock() {
-    if (! this.props.helpLabel) {
+    if (!this.props.helpLabel) {
       return null;
     }
 
@@ -207,7 +208,7 @@ export class Input extends React.Component {
   }
 
   renderInputWrapper() {
-    if (! (this.props.addonLeft || this.props.addonRight)) {
+    if (!(this.props.addonLeft || this.props.addonRight)) {
       return null;
     }
 

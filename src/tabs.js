@@ -42,13 +42,13 @@ export class Tabs extends React.Component {
 
   getTabsAlignment(alignment) {
     switch (alignment) {
-    case 'left':
-      return 'tabs-left';
-    case 'right':
-      return 'tabs-right';
-    case 'top':
-    default:
-      return '';
+      case 'left':
+        return 'tabs-left';
+      case 'right':
+        return 'tabs-right';
+      case 'top':
+      default:
+        return '';
     }
   }
 
@@ -102,7 +102,7 @@ export class Tabs extends React.Component {
       <Panel className={(isHorizontal ? 'horizontal-tabs' : '') + ' tabs-panel'}>
         <div className={alignment}>
           <ul className='nav nav-tabs'>
-           {this.renderTabs(tabs)}
+            {this.renderTabs(tabs)}
           </ul>
 
           <div className='tab-content'>

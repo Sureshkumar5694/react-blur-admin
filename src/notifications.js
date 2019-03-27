@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Notification} from './notification';
 
@@ -8,10 +9,10 @@ import {eventBus} from './lib/event-bus';
 export class Notifications extends React.Component {
 
   static propTypes = {
-    position: React.PropTypes.string,
-    newestOnTop: React.PropTypes.bool,
-    maxOpened: React.PropTypes.number,
-    preventDuplicates: React.PropTypes.bool,
+    position: PropTypes.string,
+    newestOnTop: PropTypes.bool,
+    maxOpened: PropTypes.number,
+    preventDuplicates: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -35,7 +36,7 @@ export class Notifications extends React.Component {
   }
 
   onClose(notification) {
-    const notifications = _.reject(this.state.notifications, { id: notification.id });
+    const notifications = _.reject(this.state.notifications, {id: notification.id});
     this.setState({notifications});
   }
 
@@ -45,12 +46,12 @@ export class Notifications extends React.Component {
       return notification.text === note.text;
     })) {
       let counter = this.state.counter;
-      notifications[counter] = _.assign({}, notification, { id: this.state.counter });
+      notifications[counter] = _.assign({}, notification, {id: this.state.counter});
 
       const ids = _.map(notifications, 'id');
       if (ids.length >= this.props.maxOpened) {
         const oldestId = _.head(ids);
-        notifications = _.reject(notifications, { id: oldestId });
+        notifications = _.reject(notifications, {id: oldestId});
       }
 
       this.setState({notifications, counter: ++counter});
@@ -63,7 +64,8 @@ export class Notifications extends React.Component {
 
     return _.map(notifications, (notification) => {
       return (
-        <Notification {...notification.props} key={notification.id} onClose={() => this.onClose(notification)}>{notification.text}</Notification>
+        <Notification {...notification.props} key={notification.id}
+                      onClose={() => this.onClose(notification)}>{notification.text}</Notification>
       );
     });
   }

@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Textarea extends React.Component {
 
   static propTypes = {
-    name: React.PropTypes.string,
-    className: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    label: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    disabled: React.PropTypes.bool,
-    value: React.PropTypes.node.isRequired,
+    name: PropTypes.string,
+    className: PropTypes.string,
+    placeholder: PropTypes.string,
+    label: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    value: PropTypes.node.isRequired,
   }
 
   static defaultProps = {
@@ -38,7 +39,7 @@ export class Textarea extends React.Component {
         onChange={this.props.onChange}
         disabled={this.props.disabled}
         ref='textarea'
-        ></textarea>
+      ></textarea>
     );
   }
 

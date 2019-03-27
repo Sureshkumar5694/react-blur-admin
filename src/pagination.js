@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Input} from './input';
 
 export class Pagination extends React.Component {
 
   static propTypes = {
-    currentPage: React.PropTypes.number.isRequired,
-    totalPages: React.PropTypes.number.isRequired,
-    onChange: React.PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalPages: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -21,12 +22,12 @@ export class Pagination extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentPage !== this.props.currentPage) {
-      this.setState({ dirtyValue: nextProps.currentPage, isBeingEdited: false });
+      this.setState({dirtyValue: nextProps.currentPage, isBeingEdited: false});
     }
   }
 
   onSetEditing(isBeingEdited) {
-    this.setState({ isBeingEdited });
+    this.setState({isBeingEdited});
   }
 
   onPageChange(page) {
@@ -56,7 +57,7 @@ export class Pagination extends React.Component {
   }
 
   onTextChange(event) {
-    this.setState({ dirtyValue: event.currentTarget.value });
+    this.setState({dirtyValue: event.currentTarget.value});
   }
 
   isValidPage(page) {
@@ -65,7 +66,7 @@ export class Pagination extends React.Component {
 
   renderCurrentPage() {
     const {currentPage, totalPages} = this.props;
-    if (! this.state.isBeingEdited) {
+    if (!this.state.isBeingEdited) {
       return <a>{currentPage} of {totalPages}</a>;
     }
 
@@ -79,7 +80,7 @@ export class Pagination extends React.Component {
           onValidate={page => this.isValidPage(page)}
           value={this.state.dirtyValue}
           onChange={e => this.onTextChange(e)}
-          onKeyDown={e => this.onHandleKeyDown(e)} />
+          onKeyDown={e => this.onHandleKeyDown(e)}/>
       </span>
     );
   }

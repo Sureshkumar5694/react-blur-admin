@@ -1,10 +1,9 @@
 @import 'theme/conf/_mixins';
 @import 'theme/conf/colorScheme/_mint';
 @import 'theme/conf/_variables';
-
-@import 'theme/skins/_02_transparent'; // change your theme here
+@import 'theme/skins/_02_transparent';
+// change your theme here
 @import 'theme/_preloader';
-
 @import "theme/_socicon";
 @import "theme/_layout";
 @import 'theme/buttons';
@@ -14,11 +13,9 @@
 @import 'app/table';
 @import 'app/modals';
 @import 'app/notifications';
-
 @import 'app/typography';
 @import 'theme/bootstrap-overrides/panel';
 @import 'theme/bootstrap-overrides/tabs';
-
 @import "theme/components/contentTop";
 @import "theme/components/pageTop";
 @import "theme/components/sidebar";
@@ -39,6 +36,7 @@ html {
   border-radius: 5px;
   color: $default;
 }
+
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   @include placeholderStyle($default, 0.6);
 }

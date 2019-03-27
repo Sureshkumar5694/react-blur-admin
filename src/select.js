@@ -1,27 +1,28 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Select extends React.Component {
 
   static propTypes = {
-    placeholder: React.PropTypes.string,
-    maxHeight: React.PropTypes.string,
-    onChange: React.PropTypes.func,
-    onRenderValue: React.PropTypes.func,
-    options: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        value: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.number,
+    placeholder: PropTypes.string,
+    maxHeight: PropTypes.string,
+    onChange: PropTypes.func,
+    onRenderValue: PropTypes.func,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number,
         ]),
-        label: React.PropTypes.node,
+        label: PropTypes.node,
       }),
     ),
-    value: React.PropTypes.node,
-    isSearchable: React.PropTypes.bool,
-    isOpen: React.PropTypes.bool,
-    onSearch: React.PropTypes.func,
-    onToggleOpen: React.PropTypes.func, // used when the parent needs to know that isOpen was toggled
+    value: PropTypes.node,
+    isSearchable: PropTypes.bool,
+    isOpen: PropTypes.bool,
+    onSearch: PropTypes.func,
+    onToggleOpen: PropTypes.func, // used when the parent needs to know that isOpen was toggled
   }
 
   static defaultProps = {
@@ -58,7 +59,7 @@ export class Select extends React.Component {
       this.setState({visibleOptions: nextProps.options, searchValue: ''});
     }
 
-    if (this.props.value && ! nextProps.value) {
+    if (this.props.value && !nextProps.value) {
       this.setState({activeIndex: 0, value: this.getValue(nextProps)});
     }
 
@@ -72,8 +73,8 @@ export class Select extends React.Component {
   }
 
   onToggleOpen() {
-    this.props.onToggleOpen(! this.state.isOpen);
-    this.setState({ isOpen: ! this.state.isOpen }, this.onFocus);
+    this.props.onToggleOpen(!this.state.isOpen);
+    this.setState({isOpen: !this.state.isOpen}, this.onFocus);
   }
 
   onSetActiveIndex(value) {
@@ -81,9 +82,9 @@ export class Select extends React.Component {
   }
 
   onSelectValue(selectedValue) {
-    const selectedOpt = _.find(this.props.options, { value: selectedValue });
+    const selectedOpt = _.find(this.props.options, {value: selectedValue});
     const value = selectedOpt && selectedOpt.label ? selectedOpt.label : this.props.placeholder;
-    this.setState({ isOpen: false, value });
+    this.setState({isOpen: false, value});
     this.props.onChange(selectedValue);
   }
 
@@ -144,7 +145,7 @@ export class Select extends React.Component {
   }
 
   getVisibleOptions(searchValue) {
-    if (! searchValue) {
+    if (!searchValue) {
       return this.props.options;
     }
 
@@ -166,7 +167,7 @@ export class Select extends React.Component {
   }
 
   renderSearch() {
-    if (! this.props.isSearchable) {
+    if (!this.props.isSearchable) {
       return null;
     }
 
@@ -178,7 +179,7 @@ export class Select extends React.Component {
           className='form-control'
           value={this.state.searchValue}
           onKeyDown={e => this.onHandleKeyDown(e)}
-          onChange={e => this.onTextSearch(e)} />
+          onChange={e => this.onTextSearch(e)}/>
       </div>
     );
   }
@@ -191,14 +192,14 @@ export class Select extends React.Component {
         onClick={e => this.onSelectValue(option.value)}
         onMouseOver={e => this.onSetActiveIndex(index)}>
         <a tabIndex={index}>
-          <i className={isSelected ? 'fa fa-check' : ''} /> <span className='text'>{option.label}</span>
+          <i className={isSelected ? 'fa fa-check' : ''}/> <span className='text'>{option.label}</span>
         </a>
       </li>
     );
   }
 
   renderOptions() {
-    if (! this.props.options) {
+    if (!this.props.options) {
       return null;
     }
 
@@ -235,7 +236,7 @@ export class Select extends React.Component {
             onKeyDown={e => this.onHandleKeyDown(e)}>
             {this.renderValue()}
             <span className='bs-caret'>
-              <span className='caret' />
+              <span className='caret'/>
             </span>
           </button>
           <div className='dropdown-menu open'>

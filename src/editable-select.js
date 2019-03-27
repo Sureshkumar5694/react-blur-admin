@@ -1,29 +1,30 @@
 import _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {Select} from './select';
 
 export class EditableSelect extends React.Component {
 
   static propTypes = {
-    onChange: React.PropTypes.func.isRequired,
-    value: React.PropTypes.node,
-    placeholder: React.PropTypes.string,
-    maxHeight: React.PropTypes.string,
-    options: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        value: React.PropTypes.oneOfType([
-          React.PropTypes.number,
-          React.PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.node,
+    placeholder: PropTypes.string,
+    maxHeight: PropTypes.string,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.oneOfType([
+          PropTypes.number,
+          PropTypes.string,
         ]),
-        label: React.PropTypes.node,
+        label: PropTypes.node,
       }),
     ),
-    onSearch: React.PropTypes.func, // if label is a ReactElement, we recommend you pass in an onSearch function
-    onRenderValue: React.PropTypes.func, // if label is a ReactElement, we recommend you pass in an onRenderValue function
-    isSearchable: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    isBeingEdited: React.PropTypes.bool,
+    onSearch: PropTypes.func, // if label is a ReactElement, we recommend you pass in an onSearch function
+    onRenderValue: PropTypes.func, // if label is a ReactElement, we recommend you pass in an onRenderValue function
+    isSearchable: PropTypes.bool,
+    disabled: PropTypes.bool,
+    isBeingEdited: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -39,7 +40,7 @@ export class EditableSelect extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value && ! nextProps.hasOwnProperty('isBeingEdited')) {
+    if (nextProps.value !== this.props.value && !nextProps.hasOwnProperty('isBeingEdited')) {
       this.setState({isBeingEdited: false});
     } else if (nextProps.isBeingEdited !== this.props.isBeingEdited) {
       this.setState({isBeingEdited: nextProps.isBeingEdited});
@@ -70,10 +71,11 @@ export class EditableSelect extends React.Component {
   }
 
   render() {
-    if (! this.state.isBeingEdited) {
+    if (!this.state.isBeingEdited) {
       const option = _.find(this.props.options, {value: this.props.value});
       return (
-        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`} onClick={e => this.onSetEditing(true)}>
+        <span className={`editable editable-click ${this.props.disabled ? 'disabled' : ''}`}
+              onClick={e => this.onSetEditing(true)}>
           {this.renderValue(option)}
         </span>
       );
@@ -87,7 +89,7 @@ export class EditableSelect extends React.Component {
             {...this.props}
             onChange={value => this.onChange(value)}
             onToggleOpen={isOpen => this.onSetEditing(isOpen)}
-            className='editable-has-buttons editable-input' />
+            className='editable-has-buttons editable-input'/>
         </div>
       </form>
     );

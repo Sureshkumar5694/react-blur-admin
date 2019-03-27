@@ -29,12 +29,13 @@
   },
   "homepage": "https://github.com/knledg/react-blur-admin#readme",
   "peerDependencies": {
-    "react": ">=0.14.0"
+    "react": ">=15.5.0"
   },
   "dependencies": {
     "babel-cli": "^6.9.0",
     "classnames": "^2.2.5",
     "lodash": "^4.7.0",
+    "prop-types": "^15.7.2",
     "react-flex-proto": "^1.0.0"
   },
   "devDependencies": {
