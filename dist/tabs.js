@@ -15,6 +15,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _panel = require('./panel');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -157,8 +161,8 @@ var Tabs = exports.Tabs = function (_React$Component) {
 }(_react2.default.Component);
 
 Tabs.propTypes = {
-  align: _react.PropTypes.string,
-  startTab: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string])
+  align: _propTypes2.default.string,
+  startTab: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])
 };
 Tabs.defaultProps = {
   align: 'top',
