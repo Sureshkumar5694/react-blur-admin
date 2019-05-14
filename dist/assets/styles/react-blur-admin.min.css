@@ -6090,7 +6090,7 @@ body.badmin-transparent.mobile {
       height: 100%;
       top: 0;
       left: 0;
-      background: url("../img/blur-bg.jpg") no-repeat center center;
+      background-color: #06374D;
       background-size: cover;
       will-change: transform;
       z-index: -1; }
@@ -6415,7 +6415,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background: url("../img/blur-bg.jpg") no-repeat center center;
+    background-color: #06374D;
     background-size: cover;
     will-change: transform;
     z-index: -1; }
@@ -8040,8 +8040,8 @@ a.learn-more {
     overflow-y: auto; }
 
 .panel.panel-blur {
-  background: url("../img/blur-bg-blurred.jpg");
-  transition: none;
+  background-color: #06374D;
+  background-size: cover;
   background-attachment: fixed; }
 
 .panel > .panel-body {
