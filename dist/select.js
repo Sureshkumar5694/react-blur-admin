@@ -59,10 +59,7 @@ var Select = exports.Select = function (_React$Component) {
   }, {
     key: 'handleClickOutside',
     value: function handleClickOutside(e) {
-      if (this.node.contains(e.target)) {
-        return;
-      }
-      if (this.state.isOpen) {
+      if (this.node && !this.node.contains(e.target) && this.state.isOpen) {
         this.setState({ isOpen: false }, this.onFocus);
       }
     }

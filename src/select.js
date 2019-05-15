@@ -56,10 +56,7 @@ export class Select extends React.Component {
   }
 
   handleClickOutside(e) {
-    if (this.node.contains(e.target)) {
-      return;
-    }
-    if(this.state.isOpen) {
+    if (this.node && !this.node.contains(e.target) && this.state.isOpen) {
       this.setState({isOpen: false}, this.onFocus);
     }
   }
