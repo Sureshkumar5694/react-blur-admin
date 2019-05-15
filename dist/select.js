@@ -49,6 +49,22 @@ var Select = exports.Select = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.onFocus();
+      document.addEventListener('click', this.handleClickOutside.bind(this), false);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      document.removeEventListener('click', this.handleClickOutside.bind(this));
+    }
+  }, {
+    key: 'handleClickOutside',
+    value: function handleClickOutside(e) {
+      if (this.node.contains(e.target)) {
+        return;
+      }
+      if (this.state.isOpen) {
+        this.setState({ isOpen: false }, this.onFocus);
+      }
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -279,7 +295,9 @@ var Select = exports.Select = function (_React$Component) {
         { className: 'form-group' },
         _react2.default.createElement(
           'div',
-          { className: 'btn-group bootstrap-select form-control ' + this.isOpen() },
+          { ref: function ref(node) {
+              _this6.node = node;
+            }, className: 'btn-group bootstrap-select form-control ' + this.isOpen() },
           _react2.default.createElement(
             'button',
             {

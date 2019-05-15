@@ -48,6 +48,20 @@ export class Select extends React.Component {
 
   componentDidMount() {
     this.onFocus();
+    document.addEventListener('click', this.handleClickOutside.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside.bind(this));
+  }
+
+  handleClickOutside(e) {
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    if(this.state.isOpen) {
+      this.setState({isOpen: false}, this.onFocus);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -228,7 +242,7 @@ export class Select extends React.Component {
   render() {
     return (
       <div className='form-group'>
-        <div className={`btn-group bootstrap-select form-control ${this.isOpen()}`}>
+        <div ref={node => { this.node = node; }} className={`btn-group bootstrap-select form-control ${this.isOpen()}`}>
           <button
             type="button"
             className='btn dropdown-toggle btn-default'
